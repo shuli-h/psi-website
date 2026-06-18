@@ -32,18 +32,16 @@ export default function Header() {
             >
               בית
             </Link>
-            <Link
-              href="/about"
-              className="text-gray-970 font-light text-lg hover:text-black transition-colors" style={{ fontFamily: 'var(--font-rubik)', fontWeight: 400 }}
+            <span
+              className="text-gray-970 font-light text-lg" style={{ fontFamily: 'var(--font-rubik)', fontWeight: 400, cursor: 'default' }}
             >
               אודות
-            </Link>
-            <Link
-              href="/hadpasat-midadim"
-              className="text-gray-970 font-light text-lg hover:text-black transition-colors" style={{ fontFamily: 'var(--font-rubik)', fontWeight: 400 }}
+            </span>
+            <span
+              className="text-gray-970 font-light text-lg" style={{ fontFamily: 'var(--font-rubik)', fontWeight: 400, cursor: 'default' }}
             >
               הדפסת מדידים
-            </Link>
+            </span>
           </nav>
 
           {/* Contact Button (desktop) */}
@@ -85,20 +83,16 @@ export default function Header() {
           >
             בית
           </Link>
-          <Link
-            href="/about"
-            className="text-gray-900 font-light text-lg hover:text-black transition-colors" style={{ fontFamily: 'var(--font-rubik)', fontWeight: 300 }}
-            onClick={() => setMenuOpen(false)}
+          <span
+            className="text-gray-900 font-light text-lg" style={{ fontFamily: 'var(--font-rubik)', fontWeight: 300, cursor: 'default' }}
           >
             אודות
-          </Link>
-          <Link
-            href="/hadpasat-midadim"
-            className="text-gray-900 font-light text-lg hover:text-black transition-colors" style={{ fontFamily: 'var(--font-rubik)', fontWeight: 300 }}
-            onClick={() => setMenuOpen(false)}
+          </span>
+          <span
+            className="text-gray-900 font-light text-lg" style={{ fontFamily: 'var(--font-rubik)', fontWeight: 300, cursor: 'default' }}
           >
             הדפסת מדידים
-          </Link>
+          </span>
           <Link
             href="/contact"
             className="bg-gray-900 text-white text-sm font-semibold px-5 py-2.5 rounded-full text-center hover:bg-gray-700 transition-colors"
