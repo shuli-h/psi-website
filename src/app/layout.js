@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import Script from "next/script";
 
 const rubik = Rubik({
   subsets: ["latin", "hebrew"],
@@ -19,6 +20,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-Y5DZ0CD1ET" strategy="afterInteractive" />
+        <Script id="google-analytics" strategy="afterInteractive">{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-Y5DZ0CD1ET');
+        `}</Script>
+      </head>
       <body className={`${rubik.variable} font-[family-name:var(--font-rubik)] antialiased`}>
         <Header />
         <main>{children}</main>
