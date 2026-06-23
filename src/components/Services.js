@@ -8,8 +8,9 @@ const services = [
     tag: 'בטיחות',
     title: 'בדיקות בטיחות למתקני משחקים בהתאם לת״י 1498',
     subtitle: 'בטיחות הילדים היא האחריות של כולנו!',
-    description: 'אנו מבצעים בדיקות בטיחות שנתיות ותקופתיות למתקני משחקים בהתאם לת״י 1498 הבדיקה כוללת איתור מפגעים',
-    mobileDescExtra: ' בטיחותיים, בחינת תקינות רכיבים ומחברים, בדיקת שחיקה ובלאי, זיהוי נקודות לכידה וסיכונים אפשריים, בדיקת יציבות ושלמות המתקנים, הערכת סיכוני שימוש',
+    description: 'אנו מבצעים בדיקות בטיחות שנתיות ותקופתיות למתקני משחקים בהתאם לת״י 1498',
+    desktopDescExtra: ' הבדיקה כוללת איתור מפגעים',
+    mobileDescExtra: ' הבדיקה כוללת איתור מפגעים בטיחותיים, בחינת תקינות רכיבים ומחברים, בדיקת שחיקה ובלאי, זיהוי נקודות לכידה וסיכונים אפשריים, בדיקת יציבות ושלמות המתקנים, הערכת סיכוני שימוש',
     modalContent: (
       <>
         <p className="text-gray-600 text-base leading-relaxed" style={{ fontWeight: 400 }}>
@@ -48,8 +49,9 @@ const services = [
     id: 2,
     tag: 'תחזוקה',
     title: 'בדיקות בטיחות למתקני כושר בהתאם לת״י 1497 ו-EN 16630',
-    description: 'מתקני כושר ציבוריים חשופים לשימוש אינטנסיבי ולעומסים משתנים. בדיקות תקופתיות מאפשרות לזהות ליקויים בזמן ולמנוע סיכונים',
-    mobileDescExtra: ' מיותרים. אנו מבצעים בדיקות בטיחות מקצועיות למתקני כושר בהתאם לדרישות התקנים הרלוונטיים, תוך בחינת תקינות מכנית של המתקנים',
+    description: 'מתקני כושר ציבוריים חשופים לשימוש אינטנסיבי ולעומסים משתנים. בדיקות תקופתיות מאפשרות לזהות ליקויים בזמן',
+    desktopDescExtra: ' ולמנוע סיכונים מיותרים. הבדיקות כוללות בחינת יציבות ותקינות רכיבים',
+    mobileDescExtra: ' ולמנוע סיכונים מיותרים. אנו מבצעים בדיקות בטיחות מקצועיות למתקני כושר בהתאם לדרישות התקנים הרלוונטיים, תוך בחינת תקינות מכנית של המתקנים',
     modalContent: (
       <>
         <p className="text-gray-600 text-base leading-relaxed" style={{ fontWeight: 400 }}>
@@ -170,11 +172,10 @@ export default function Services() {
             {services.map((service) => (
               <div
                 key={service.id}
-                className="bg-white rounded-2xl border border-gray-100 p-6 flex flex-col gap-4 w-full aspect-square"
+                className="bg-white rounded-2xl border border-gray-100 p-6 flex flex-col gap-4 w-full sm:aspect-square lg:h-[264px] lg:aspect-auto"
                 style={{
                   boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
                   minWidth: '260px',
-                  minHeight: '260px',
                 }}
               >
                 {/* Icon + title on same row */}
@@ -199,6 +200,9 @@ export default function Services() {
                   )}
                   <p className="text-gray-500 text-[15px] leading-relaxed" style={{ fontWeight: 300 }}>
                     {service.description}
+                    {service.desktopDescExtra && (
+                      <span className="hidden lg:inline">{service.desktopDescExtra}</span>
+                    )}
                     {service.mobileDescExtra && (
                       <span className="lg:hidden">{service.mobileDescExtra}</span>
                     )}
@@ -224,7 +228,7 @@ export default function Services() {
           </div>
 
           {/* ── RIGHT side: Text ───────────────────────── */}
-          <div className="w-full lg:w-[35%] lg:flex-none flex flex-col gap-5 text-right px-4 lg:px-6 order-1 lg:order-2">
+          <div className="w-full lg:w-[30%] lg:flex-none flex flex-col gap-5 text-right px-4 lg:px-6 order-1 lg:order-2 -mt-8 lg:mt-0">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
               <span className="relative inline-block whitespace-nowrap">
                 השירותים שלנו
@@ -265,7 +269,7 @@ export default function Services() {
               </span>
             </h2>
 
-            <p className="text-gray-500 text-lg lg:text-xl leading-relaxed" style={{ fontWeight: 300 }}>
+            <p className="text-gray-500 text-lg lg:text-[17px] leading-relaxed" style={{ fontWeight: 300 }}>
               בטיחות אמיתית מתחילה בבדיקה מקצועית ויסודית. אנו ב-PSI מספקים מעטפת שירותים מלאה בתחום בטיחות מתקני המשחק והכושר – החל מבדיקות תקופתיות בהתאם לדרישות התקן ועד פתרונות מקצועיים המסייעים לכם להגן על המשתמשים ולעמוד בדרישות החוק.
             </p>
           </div>

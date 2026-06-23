@@ -3,11 +3,13 @@ import { Resend } from 'resend';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request) {
+  console.log('[/api/contact] POST received');
   try {
     const { firstName, lastName, phone, address, email, message } = await request.json();
+    console.log('[/api/contact] Parsed body:', { firstName, lastName, phone, email });
 
     const { error } = await resend.emails.send({
-      from: 'PSI Safety <onboarding@resend.dev>',
+      from: 'PSI Safety <office@psi-safety.co.il>',
       to: ['office@psi-safety.co.il'],
       replyTo: email || undefined,
       subject: 'פנייה חדשה מאתר PSI',
@@ -50,13 +52,14 @@ export async function POST(request) {
     });
 
     if (error) {
-      console.error('Resend error:', error);
-      return Response.json({ success: false }, { status: 500 });
+      console.error('[/api/contact] Resend error:', error);
+      return Response.json({ success: false, error: error.message || 'שגיאה בשליחת המייל' }, { status: 500 });
     }
 
+    console.log('[/api/contact] Email sent successfully');
     return Response.json({ success: true });
   } catch (err) {
-    console.error('Contact form error:', err);
-    return Response.json({ success: false }, { status: 500 });
+    console.error('[/api/contact] Unexpected error:', err);
+    return Response.json({ success: false, error: err.message || 'שגיאה לא ידועה' }, { status: 500 });
   }
 }

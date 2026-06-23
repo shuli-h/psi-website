@@ -5,7 +5,7 @@ export default function FloatingWhatsApp() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="צור קשר בוואטסאפ"
-      className="md:hidden fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-transform duration-200 hover:scale-110 active:scale-95"
+      className="md:hidden fixed bottom-5 left-5 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-transform duration-200 hover:scale-110 active:scale-95"
       style={{ backgroundColor: '#25D366' }}
     >
       <svg

@@ -13,7 +13,7 @@ export default function ContactSection() {
     message: '',
   });
   const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
   const router = useRouter();
 
   function handleChange(e) {
@@ -23,7 +23,7 @@ export default function ContactSection() {
   async function handleSubmit(e) {
     e.preventDefault();
     setSubmitting(true);
-    setError(false);
+    setError(null);
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
@@ -33,10 +33,19 @@ export default function ContactSection() {
       if (res.ok) {
         router.push('/thank-you');
       } else {
-        setError(true);
+        let message = 'אירעה שגיאה בשליחת הטופס. אנא נסו שוב או צרו קשר ישירות.';
+        try {
+          const data = await res.json();
+          if (data.error) message = data.error;
+        } catch (parseErr) {
+          console.error('Failed to parse error response:', parseErr);
+        }
+        console.error('Contact form server error:', message);
+        setError(message);
       }
-    } catch {
-      setError(true);
+    } catch (fetchErr) {
+      console.error('Contact form network error:', fetchErr);
+      setError('לא ניתן להתחבר לשרת. בדקו את החיבור לאינטרנט.');
     } finally {
       setSubmitting(false);
     }
@@ -181,7 +190,7 @@ export default function ContactSection() {
             {/* Error message */}
             {error && (
               <p className="text-red-600 text-sm text-center">
-                אירעה שגיאה בשליחת הטופס. אנא נסו שוב או צרו קשר ישירות.
+                {error}
               </p>
             )}
 
